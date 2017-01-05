@@ -1,0 +1,17 @@
+{
+  "name": "express-todo-list",
+  "version": "1.0.0",
+  "description": "Express Todo List",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test/todo_tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdi-sg/express-todo-list-pt1.git"
+  },
+  "dependencies": {
+    "uuid": "^3.0.1"
+  }
+}
