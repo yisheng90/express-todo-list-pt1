@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const todoController = require('./controllers/todos_controller')
 
-mongoose.connect('mongodb://localhost/todo-app')
+mongoose.connect('mongodb://127.0.0.1/todo-app')
 mongoose.Promise = global.Promise
 // app.set('view engine', 'ejs');
 
