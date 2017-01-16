@@ -1,0 +1,22 @@
+body {
+  background: rgba(0,0,0,0.1);
+}
+
+.footer {
+  position: absolute;
+  bottom:0;
+}
+
+.todo {
+  background: rgba(255,255,255,1)
+}
+
+nav li {
+  font-size: 20px;
+  list-style: none;
+  margin: 40% 0 0 0;
+}
+
+.main-nav {
+  background: white;
+}

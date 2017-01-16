@@ -1,14 +1,31 @@
-<h1> <%= todo.name %> </h1>
+<div class='todo'>
+  <h1> <%= todo.name %> </h1>
 
-</div>
+  <div class='todo-element'>
     <ul>
       <li> ID : <%= todo._id%></li>
       <li> Name : <%= todo.name%></li>
       <li> Description : <%= todo.description%></li>
       <li> Completed : <%= todo.completed%></li>
-  </ul>
-</div>
+    </ul>
+  </div>
 
-<form method="POST" action="?_method=DELETE">
-  <button type="submit">Delete resource</button>
-</form>
+  <nav class='nav navbar-default right'>
+    <div class='collapse navbar-collapse pull-right'>
+      <ul class='navbar navbar-nav'>
+        <li>
+          <a href='<%=todo._id%>/edit'>
+            <button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'></span> Edit</button>
+          </a>
+        </li>
+
+        <li>
+          <form method="POST" action="?_method=DELETE">
+            <button type="submit" class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span> Delete</button>
+          </form>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</div>

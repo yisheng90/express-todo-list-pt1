@@ -13,6 +13,7 @@ mongoose.Promise = global.Promise
 app.set('view engine', 'ejs')
 
 app.use(methodOverride('_method'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'views')))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   res.redirect(`/todos`)
 })
+
 
 
 let server = app.listen(3000, () => {

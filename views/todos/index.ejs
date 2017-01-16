@@ -1,27 +1,43 @@
 <div class='col-md-12 text-center'>
-<h1> Todo List </h1>
+<h1> DashBoard </h1>
 </div>
 
 
 
-<div class='navbar-header'>
-  <ul class='nav navbar-nav'>
-  <button><a href='new' class="nounderline">New</a></button>
-  </ul>
+<div class='navbar-header col-md-1 col-md-offset-11 text-right'>
+
+    <a href='new' class="nounderline">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a>
+
 </div>
 
 
 
 <div class='col-md-12'>
   <div class='row'>
+  <h2 class='col-md-offset-1'> Outstanding Task </h2>
 <% todos.forEach(function (todo){ %>
+  <% if(!todo.completed)  {%>
   <a href='<%=todo._id%>'>
-  <div class='col-md-4 panel panel-primary'>
+  <div class='col-md-3 col-md-offset-1 panel panel-default'>
     <div class='panel-heading h3'> <%= todo.name%></div>
     <div class='panel-body'>ID: <%= todo.id%></div>
-
   </div>
   </a>
-<% })%>
+<% }})%>
+</div>
+
+<div class='row'>
+<h2 class='col-md-offset-1'> Completed Task </h2>
+<% todos.forEach(function (todo){ %>
+<% if(todo.completed)  {%>
+<a href='<%=todo._id%>'>
+<div class='col-md-3 col-md-offset-1 panel panel-default'>
+  <div class='panel-heading h3'> <%= todo.name%></div>
+  <div class='panel-body'>ID: <%= todo.id%></div>
+</div>
+</a>
+<% }})%>
 </div>
 </div>

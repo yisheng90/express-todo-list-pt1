@@ -1,6 +1,17 @@
-<form method="POST">
-  Name: <input type='text' name='name'><br>
-  Description: <input type='text' name='description'><br>
-  Completed: <input type='text' name='completed'><br>
-  <button type="submit"> Submit </button>
-</form>
+<div class='form-group'>
+  <label for='name'>Task Name</label>
+  <input type='text' class='form-control' name='name' ></input>
+</div>
+<div class='form-group'>
+  <label for='description'>Description</label>
+  <input type='text' class='form-control' name='description' ></input>
+</div>
+<div class='form-group'>
+  <label for='completed'>Completed</label>
+  <select type='text' class='form-control' name='completed' >
+    <option>true</option>
+    <option>false</option>
+  </select>
+</div>
+
+<button type="submit" class='btn btn-primary'>Submit</button>

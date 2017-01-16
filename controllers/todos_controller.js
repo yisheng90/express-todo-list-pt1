@@ -51,7 +51,7 @@ router.put('/:id/edit', (req, res) => {
       res.status(422).json({ 'error message': 'Not Successful'})
       return
     }
-    res.redirect(`/todos/${todo._id}`)
+    res.redirect(`/todos/${req.params.id}`)
   })
 })
 

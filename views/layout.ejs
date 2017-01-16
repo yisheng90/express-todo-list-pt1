@@ -2,14 +2,38 @@
 <html>
   <head>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+     <link rel="stylesheet" type="text/css" href="./../css/style.css">
+     <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+     <script src="../main.js"></script>
     <title>Todo App</title>
   </head>
   <body>
+    <div class='container-fluid main-nav'>
+      <div class='container'>
+      <nav class='nav navbar-deafult'>
+        <h1 class='col-md-1'> Todos </h1>
+        <ul class='navbar navbar-nav pull-right'>
+          <li class='hide' style='display:none'>
+            <a href='new' class="nounderline" >
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    </div>
     <div class='container center'>
+
       <div class='row'>
         <%- body %>
-    </div>
+      </div>
   </div>
+
+  <footer class='footer col-md-12 text-center'>
+    YiShengLee & Co 2017
+  </footer>
   </body>
 </html>
