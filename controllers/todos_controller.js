@@ -2,50 +2,63 @@ const express = require('express')
 const Todo = require('../models/todo.js')
 const router = express.Router()
 
+router.get('/new', (req, res) => {
+  res.render('todos/new')
+})
+
 router.get('/', (req, res) => {
   Todo.find({}, function (err, todos) {
     if (err) {
       return res.status(422).json({ 'error message': 'Not Successful'})
     }
-    res.json(todos)
+    res.render('todos/index', {todos: todos})
   })
 })
 
 router.get('/:id', (req, res) => {
   Todo.findById(req.params.id, function (err, todo) {
     if (err) return res.status(422).json({ 'error message': 'Not Successful'})
-    res.json(todo)
+    console.log(todo)
+    res.render('todos_id', {todo: todo})
+  })
+})
+
+router.get('/:id/edit', (req, res) => {
+  Todo.findById(req.params.id, function (err, todo) {
+    if (err) return res.status(422).json({ 'error message': 'Not Successful'})
+    console.log(todo)
+    res.render('todos_id_edit', {todo: todo})
   })
 })
 
 router.delete('/:id', (req, res) => {
   Todo.findByIdAndRemove(req.params.id, function (err) {
     if (err) return res.status(422).json({ 'error message': 'Not Successful'})
-    res.json({ 'message': 'deleted' })
+    res.redirect('/todos')
   })
 })
 
-router.post('/', (req, res) => {
+router.post('/new', (req, res) => {
   Todo.create(req.body, (err, todo) => {
     if (err) return res.status(422).json({ 'error message': 'Not Successful'})
-    res.json(todo)
+    res.redirect(`/todos/${todo._id}`)
   })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id/edit', (req, res) => {
   Todo.findByIdAndUpdate(req.params.id, req.body, function (err) {
     if (err) {
       res.status(422).json({ 'error message': 'Not Successful'})
       return
     }
-    res.redirect(200, '/')
+    res.redirect(`/todos/${todo._id}`)
   })
 })
 
 router.delete('/', (req, res) => {
   Todo.remove({}, function (err) {
     if (err) return res.status(422).json({ 'error message': 'Not Successful'})
-    res.json({ 'message': 'deleted' })
+    res.redirect('/todos')
   })
 })
 
