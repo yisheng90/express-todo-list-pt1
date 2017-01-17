@@ -3,7 +3,7 @@ const Todo = require('../models/todo.js')
 const router = express.Router()
 
 router.get('/new', (req, res) => {
-  res.render('todos/new')
+  res.render('todos/new', {todo: {name: 'Task Name', description: 'Description', completed: 'false'}})
 })
 
 router.get('/', (req, res) => {
@@ -27,7 +27,7 @@ router.get('/:id/edit', (req, res) => {
   Todo.findById(req.params.id, function (err, todo) {
     if (err) return res.status(422).json({ 'error message': 'Not Successful'})
     console.log(todo)
-    res.render('todos_id_edit', {todo: todo})
+    res.render('todos_id_edit', {todo: todo, path: req.path})
   })
 })
 
@@ -46,13 +46,17 @@ router.post('/new', (req, res) => {
 })
 
 router.put('/:id/edit', (req, res) => {
-  Todo.findByIdAndUpdate(req.params.id, req.body, function (err) {
-    if (err) {
-      res.status(422).json({ 'error message': 'Not Successful'})
-      return
-    }
-    res.redirect(`/todos/${req.params.id}`)
-  })
+  if (req.body.name.length < 5) {
+    res.redirect(`/todos/${req.params.id}/edit`)
+  } else {
+    Todo.findByIdAndUpdate(req.params.id, req.body, function (err) {
+      if (err) {
+        res.status(422).json({ 'error message': 'Not Successful'})
+        return
+      }
+      res.redirect(`/todos/${req.params.id}`)
+    })
+  }
 })
 
 router.delete('/', (req, res) => {
