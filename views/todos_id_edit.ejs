@@ -1,5 +1,10 @@
 <h1>Id: <%= todo._id%></h1>
 
+<% if (todo.name.length < 5) {%>
+  <%= 'Taskname should greater than 5'%>
+<%}%>
+
 <form method='POST' action="?_method=PUT">
 <% include ./partials/form.ejs %>
 </form>
+<a href='/todos'><button class='btn btn-danger pull-right'>Cancel</button></a>
