@@ -1,0 +1,16 @@
+<h1><%= list.name%></h1>
+<h3>Id: <%= list._id%></h3>
+
+<form method = "POST" action="?_method=PUT">
+  <div class='form-group'>
+    <label for='name'>Name</label>
+    <input type='text' class='form-control' name='name' value='<%= list.name%>' ></input>
+  </div>
+  <div class='form-group'>
+    <label for='color'>Color</label>
+    <input type='text' class='form-control' name='color' value='<%= list.color%>'></input>
+  </div>
+
+  <button type="submit" class='btn btn-primary pull-right'>Submit</button>
+</form>
+<a href='/todolists'><button class='btn btn-danger pull-right'>Cancel</button></a>

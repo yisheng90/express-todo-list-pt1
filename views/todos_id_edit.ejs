@@ -7,4 +7,4 @@
 <form method='POST' action="?_method=PUT">
 <% include ./partials/form.ejs %>
 </form>
-<a href='/todos'><button class='btn btn-danger pull-right'>Cancel</button></a>
+<a href='/todolist/<%= todo.list_id%>/todos/<%= todo._id%>'><button class='btn btn-danger pull-right'>Cancel</button></a>

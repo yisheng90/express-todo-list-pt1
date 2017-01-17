@@ -1,0 +1,21 @@
+<div class='col-md-12 text-center'>
+<h1> Todo List </h1>
+</div>
+
+<div class='col-md-12'>
+  <div class='row'>
+<% list.forEach(function (item){ %>
+  <a href='todolists/<%= item._id%>'>
+  <div class='col-md-3 col-md-offset-1 panel panel-default'>
+    <div class='panel-heading h3'> <%= item.name%></div>
+  </div>
+  </a>
+<% })%>
+
+<a href='/todolists/new'>
+<div class='col-md-3 col-md-offset-1 panel panel-default'>
+  <div class='text-center'> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  </div>
+</div>
+</a>
+</div>

@@ -25,3 +25,7 @@ a {
   text-decoration: none;
   color: rgba(0,0,0,0.4);
 }
+
+panel {
+  height: 200px;
+}

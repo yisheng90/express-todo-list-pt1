@@ -1,13 +1,13 @@
 const express = require('express')
 const Todo = require('../models/todo.js')
-const router = express.Router()
+const router = express.Router({mergeParams: true})
 
 router.get('/new', (req, res) => {
-  res.render('todos/new', {todo: {name: 'Task Name', description: 'Description', completed: 'false'}})
+  res.render('todos/new', {todo: {name: 'Task Name', description: 'Description', completed: 'false', list_id: req.params.id }})
 })
 
 router.get('/', (req, res) => {
-  Todo.find({}, function (err, todos) {
+  Todo.find({list_id: req.params.id}).populate('list_id').exec(  (err, todos) => {
     if (err) {
       return res.status(422).json({ 'error message': 'Not Successful'})
     }
@@ -41,7 +41,7 @@ router.delete('/:id', (req, res) => {
 router.post('/new', (req, res) => {
   Todo.create(req.body, (err, todo) => {
     if (err) return res.status(422).json({ 'error message': 'Not Successful'})
-    res.redirect(`/todos/${todo._id}`)
+    res.redirect(`${todo._id}`)
   })
 })
 

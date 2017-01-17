@@ -1,18 +1,17 @@
-<div class='todo'>
+<div class='list'>
 
 
-  <a  class='pull-right' href='/todolists/<%=todo.list_id%>/todos'> <span class='glyphicon glyphicon-remove'></span> </a>
-  <h1> <%= todo.name %> </h1>
+  <a  class='pull-right' href='/todolists'> <span class='glyphicon glyphicon-remove'></span> </a>
+  <h1> <%= list.name %> </h1>
 
   <hr>
 
 
   <div class='todo-element'>
     <ul>
-      <li> ID : <%= todo._id%></li>
-      <li> Name : <%= todo.name%></li>
-      <li> Description : <%= todo.description%></li>
-      <li> Completed : <%= todo.completed%></li>
+      <li> ID : <%= list._id%></li>
+      <li> Name : <%= list.name%></li>
+      <li> Color : <%= list.color%></li>
     </ul>
   </div>
 
@@ -20,7 +19,7 @@
     <div class='collapse navbar-collapse pull-right'>
       <ul class='navbar navbar-nav'>
         <li>
-          <a href='<%=todo._id%>/edit'>
+          <a href='/todolists/<%= list._id%>/edit'>
             <button class='btn btn-primary'><span class='glyphicon glyphicon-pencil'></span> Edit</button>
           </a>
         </li>

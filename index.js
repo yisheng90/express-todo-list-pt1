@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const express = require('express')
 const bodyParser = require('body-parser')
 const todoController = require('./controllers/todos_controller')
+const todolistsController = require('./controllers/todolists_controller')
 const ejsLayouts = require('express-ejs-layouts')
 const path = require('path')
 const methodOverride = require('method-override')
@@ -18,7 +19,8 @@ app.use(express.static(path.join(__dirname, 'views')))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(ejsLayouts)
-app.use('/todos', todoController)
+
+app.use('/todolists', todolistsController)
 
 app.get('/', (req, res) => {
   res.render('index')
