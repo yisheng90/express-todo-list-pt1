@@ -32,9 +32,9 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  Todo.findByIdAndRemove(req.params.id, function (err) {
+  Todo.findByIdAndRemove(req.params.id, function (err, todo) {
     if (err) return res.status(422).json({ 'error message': 'Not Successful'})
-    res.redirect('/todos')
+    res.redirect(`/todolists/${todo.list_id}/todos`)
   })
 })
 
@@ -49,12 +49,12 @@ router.put('/:id/edit', (req, res) => {
   if (req.body.name.length < 5) {
     res.redirect(`/todos/${req.params.id}/edit`)
   } else {
-    Todo.findByIdAndUpdate(req.params.id, req.body, function (err) {
+    Todo.findByIdAndUpdate(req.params.id, req.body, function (err, todo) {
       if (err) {
         res.status(422).json({ 'error message': 'Not Successful'})
         return
       }
-      res.redirect(`/todos/${req.params.id}`)
+      res.redirect(`/todolists/${todo.list_id}/todos/${req.params.id}`)
     })
   }
 })
@@ -62,7 +62,7 @@ router.put('/:id/edit', (req, res) => {
 router.delete('/', (req, res) => {
   Todo.remove({}, function (err) {
     if (err) return res.status(422).json({ 'error message': 'Not Successful'})
-    res.redirect('/todos')
+    res.redirect(`/todolists/${req.params.id}`)
   })
 })
 

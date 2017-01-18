@@ -22,9 +22,10 @@ router.post('/new', (req, res) => {
   })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id/todos', (req, res) => {
   TodoList.findById(req.params.id, (err, list) => {
-    res.render('todolist/todolist_id', {list: list})
+    // res.render('todolist/todolist_id', {list: list})
+    res.redirect(`/todolists/${list._id}/todos`)
   })
 })
 
